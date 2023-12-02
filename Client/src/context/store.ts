@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import quizReducer from '@/context/QuizSlice'; 
+import quizReducer from '@/context/QuizSlice';
 
-const store = configureStore({
-  reducer: {
-    quiz: quizReducer,
-  },
-});
+export const createStore = () =>
+  configureStore({
+    reducer: {
+      quiz: quizReducer,
+    },
+  });
 
-export default store;
+// export type RootState = ReturnType<typeof createStore.getState>;
+// export type AppDispatch = typeof createStore.dispatch;
