@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+'use client'
 
+import { getChapter } from '@/context/QuizSlice';
+import  { useState } from 'react';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 interface QuizQuestionProps {
   question: string;
   answerOptions: { answer: string; isCorrect?: boolean }[];
@@ -11,6 +14,12 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, answerOptions }) 
   const handleRadioChange = (answer: string) => {
     setSelectedAnswer(answer);
   };
+
+
+  const { quiz } = useSelector((state : any)=>state.quiz) ;
+  
+ 
+
 
   return (
     <div>

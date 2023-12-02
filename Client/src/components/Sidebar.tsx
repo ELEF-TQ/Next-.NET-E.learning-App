@@ -1,13 +1,18 @@
 // Sidebar.tsx
 import { useDispatch } from 'react-redux';
 import { getChapter } from '@/context/QuizSlice';
+import { AppDispatch, RootState } from '@/context/store';
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 
-const Sidebar = () => {
-  const dispatch = useDispatch();
+const Sidebar = () => { 
+
+  type AppDispatch = ThunkDispatch<RootState, undefined, AnyAction>;
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleChapterClick = (chapterId: number) => {
-   // dispatch(getChapter(chapterId));
+    dispatch(getChapter(chapterId));
   };
+  
 
   return (
     <>
