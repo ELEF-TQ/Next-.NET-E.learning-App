@@ -2,17 +2,15 @@
 
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import api from '@/api/index'; // Adjust the path accordingly
+import api from '@/api/index'; 
 
 interface FormData {
   name: string;
   email: string;
   password: string;
 }
-
 const Signup: React.FC = () => {
   const router = useRouter();
-
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -31,25 +29,17 @@ const Signup: React.FC = () => {
 
     try {
       const response = await api.post('/signup', formData);
-
-      // Assuming your backend returns a token upon successful sign-in
       const token = response.data.token;
-
-      // Store the token in your preferred way (e.g., localStorage, cookies, etc.)
-      // For example, using localStorage:
       localStorage.setItem('token', token);
-
-      // Redirect to a different page after successful sign-in
       router.push('/');
     } catch (error) {
-      // Handle errors (e.g., show an error message)
       console.error('Sign-up failed',error);
     }
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <section className=" content-inside">
+      <div className="flex flex-col items-center justify-center  px-6 py-8 mx-auto  lg:py-0">
         <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
           E_Learning

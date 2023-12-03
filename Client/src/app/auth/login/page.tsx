@@ -21,31 +21,19 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       const response = await axios.post('/login', formData);
-
-      // Assuming your backend returns a token upon successful login
       const token = response.data.token;
-
-      // Store the token in your preferred way (e.g., localStorage, cookies, etc.)
-      // For example, using localStorage:
       localStorage.setItem('token', token);
-
-      // Redirect to a different page after successful login
-      // You can replace '/dashboard' with the desired path
-      // or handle redirection based on the response from your backend
-      // (e.g., if response.data.success, then redirect)
       router.push('/');
     } catch (error) {
-      // Handle errors (e.g., show an error message)
       console.error('Login failed:', error);
     }
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <section className=" content-inside">
+      <div className="flex   flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-0">
         <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
           E_Learning
