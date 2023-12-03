@@ -22,7 +22,7 @@ export default function Home() {
   const currentQuiz = QuizData[currentQuestion];
 
   return (
-    <div className='flex  justify-around max-w-screen-xl mx-auto p-4 md:py-8 bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800'>
+    <div className='flex mt-20  justify-around max-w-screen-xl mx-auto p-4 md:py-8 bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800'>
       <Sidebar />
       <main className="flex-grow">
         {currentQuestion === 0 ? (

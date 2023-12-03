@@ -10,7 +10,7 @@ const Video: React.FC<VideoProps> = ({ url }) => {
   }
 
   return (
-    <div className="video-container">
+    <div className="video-container flex items-center justify-center">
       <iframe
         width="560"
         height="315"
