@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'E_Learning',
   description: 'Next & .NET Quiz App',
+  icons:{
+    icon:"https://flowbite.com/docs/images/logo.svg"
+  }
 };
 
 const classes = { footer: 'Footer', header: 'Header', sidebar: 'Sidebar' };
