@@ -38,14 +38,14 @@ export default function Home() {
         <div className="flex justify-between mt-4">
           <button
             onClick={handlePrevious}
-            className="w-[49%] py-3 bg-indigo-600 rounded-lg"
+            className="w-[49%] py-3 bg-primary-600 rounded-lg"
             disabled={currentQuestion === 0}
           >
             Previous
           </button>
           <button
             onClick={handleNext}
-            className="w-[49%] py-3 bg-indigo-600 rounded-lg"
+            className="w-[49%] py-3 bg-primary-600 rounded-lg"
             disabled={currentQuestion === QuizData.length - 1}
           >
             Next
