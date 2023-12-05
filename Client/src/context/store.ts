@@ -1,10 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import quizReducer from '@/context/QuizSlice'; 
+import { configureStore, ThunkAction, Action, ThunkDispatch, AnyAction } from '@reduxjs/toolkit';
+import  QuizReducer from '@/context/QuizSlice'
+import AuthReducer from '@/context/AuthSlice'
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    quiz: quizReducer,
+    quiz: QuizReducer ,
+    auth: AuthReducer,
   },
 });
 
-export default store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = ThunkDispatch<RootState, undefined, AnyAction>;
+export type AppThunk = ThunkAction<void, RootState, null, Action<string>>;

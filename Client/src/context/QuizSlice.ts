@@ -1,18 +1,24 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '@/api';
 
-const initialState = {
-  quiz: null,
+interface QuizState {
+  chapter: any | null; 
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | null;
+}
+
+const initialState: QuizState = {
+  chapter: null,
   status: 'idle',
-  error: null as string | null,
+  error: null,
 };
 
-export const getChapter = createAsyncThunk('quiz/getChapter', async (chapterId : number) => {
+export const getChapter = createAsyncThunk('quiz/getChapter', async (chapterId: number) => {
   try {
     const response = await api.get(`/${chapterId}`);
-    return response.data.quiz; 
+    return response.data; 
   } catch (error) {
-    throw new Error('An error occurred while fetching the quiz.'); 
+    throw new Error('An error occurred while fetching the chapter.');
   }
 });
 
@@ -27,7 +33,7 @@ const quizSlice = createSlice({
       })
       .addCase(getChapter.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.quiz = action.payload;
+        state.chapter = action.payload;
       })
       .addCase(getChapter.rejected, (state, action) => {
         state.status = 'failed';
@@ -35,6 +41,5 @@ const quizSlice = createSlice({
       });
   },
 });
-
 
 export default quizSlice.reducer;

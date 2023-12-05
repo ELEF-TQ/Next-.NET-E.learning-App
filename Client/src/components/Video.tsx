@@ -1,16 +1,15 @@
 
 interface VideoProps {
-  url?: string; // Make the 'url' property optional
+  url?: string; 
 }
 
 const Video: React.FC<VideoProps> = ({ url }) => {
-  // Check if 'url' is defined before rendering the iframe
   if (!url) {
-    return null; // Or you can render a placeholder or handle it in a different way
+    return null; 
   }
 
   return (
-    <div className="video-container">
+    <div className="video-container flex items-center justify-center">
       <iframe
         width="560"
         height="315"
