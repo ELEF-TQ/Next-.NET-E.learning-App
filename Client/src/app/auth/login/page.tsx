@@ -1,39 +1,33 @@
 "use client"
+
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
+import { login } from '@/context/AuthSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/context/store';
 
 const Login: React.FC = () => {
-
-  const router = useRouter();
-
-  const [formData, setFormData] = useState({
+  const dispatch = useDispatch<AppDispatch>();
+  const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
+    setUserData({
+      ...userData,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('/login', formData);
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-      router.push('/');
-    } catch (error) {
-      console.error('Login failed:', error);
-    }
+    console.log(userData);
+    dispatch(login(userData));
   };
 
   return (
-    <section className=" content-inside">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-0">
+    <section className="content-inside">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
           E_Learning
@@ -46,7 +40,7 @@ const Login: React.FC = () => {
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Your email
+                  Email
                 </label>
                 <input
                   type="email"

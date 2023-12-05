@@ -1,45 +1,41 @@
 "use client"
 
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
-import api from '@/api/index'; 
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/context/store';
+import { signup } from '@/context/AuthSlice';
 
-interface FormData {
-  name: string;
+interface UserData {
+  username: string;
   email: string;
   password: string;
 }
+
 const Signup: React.FC = () => {
-  const router = useRouter();
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
+  const dispatch = useDispatch<AppDispatch>();
+
+  const [userData, setUserData] = useState<UserData>({
+    username: '',
     email: '',
     password: '',
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
+    setUserData({
+      ...userData,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    try {
-      const response = await api.post('/signup', formData);
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-      router.push('/');
-    } catch (error) {
-      console.error('Sign-up failed',error);
-    }
+    console.log(userData);
+    dispatch(signup(userData));
   };
 
   return (
     <section className="content-inside">
-      <div className="flex flex-col items-center justify-center  px-6 py-8 mx-auto  lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
           E_Learning
@@ -51,15 +47,15 @@ const Signup: React.FC = () => {
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Name
+                <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Username
                 </label>
                 <input
                   type="text"
-                  name="name"
-                  id="name"
+                  name="username"
+                  id="username"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Enter name..."
+                  placeholder="Enter username..."
                   required
                   onChange={handleChange}
                 />
@@ -99,7 +95,7 @@ const Signup: React.FC = () => {
                 Sign up
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                I have already have an account !{' '}
+                I already have an account!{' '}
                 <a href="/auth/login" className="text-primary-600 hover:underline dark:text-primary-500">
                   Log in
                 </a>
