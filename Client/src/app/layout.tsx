@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { StoreProvider } from '@/context/storeProvider';
+import Certificate from '@/components/Certficate';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
