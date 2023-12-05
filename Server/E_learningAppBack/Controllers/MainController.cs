@@ -207,56 +207,56 @@ public class MainController : ControllerBase
     {
         var chapterData = _context.Chapters
             .Where(chapter => chapter.ChapterId == chapterId)
-            .Select(chapter => new
+            .Select(chapter => new ChapterData
             {
-                chapter = new
+                Chapter = new ChapterInfo
                 {
-                    id = chapter.ChapterId,
-                    name = chapter.ChapterName
+                    Id = chapter.ChapterId,
+                    Name = chapter.ChapterName
                 },
-                course = _context.Courses
+                Course = _context.Courses
                     .Where(course => course.ChapterId == chapter.ChapterId)
-                    .Select(course => new
+                    .Select(course => new CourseInfo
                     {
-                        id = course.CourseId,
-                        name = course.CourseName
+                        Id = course.CourseId,
+                        Name = course.CourseName
                     })
                     .FirstOrDefault(),
-                videos = _context.Videos
+                Videos = _context.Videos
                     .Where(video => video.CourseId == _context.Courses
                         .Where(course => course.ChapterId == chapter.ChapterId)
                         .Select(course => course.CourseId)
                         .FirstOrDefault())
-                    .Select(video => new
+                    .Select(video => new VideoInfo
                     {
-                        id = video.VideoId,
-                        title = video.VideoTitle,
+                        Id = video.VideoId,
+                        Title = video.VideoTitle,
                         VideoUrl = video.VideoUrl
                     })
                     .ToList(),
-                quiz = _context.Quizzes
+                Quiz = _context.Quizzes
                     .Where(quiz => quiz.ChapterId == chapter.ChapterId)
-                    .Select(quiz => new
+                    .Select(quiz => new QuizInfo
                     {
-                        id = quiz.QuizId,
-                        title = quiz.QuizTitle
+                        Id = quiz.QuizId,
+                        Title = quiz.QuizTitle
                     })
                     .FirstOrDefault(),
-                questions = _context.Questions
+                Questions = _context.Questions
                     .Where(question => question.QuizId == _context.Quizzes
                         .Where(quiz => quiz.ChapterId == chapter.ChapterId)
                         .Select(quiz => quiz.QuizId)
                         .FirstOrDefault())
-                    .Select(question => new
+                    .Select(question => new QuestionInfo
                     {
-                        id = question.QuestionId,
-                        text = question.QuestionText,
-                        options = new[]
+                        Id = question.QuestionId,
+                        Text = question.QuestionText,
+                        Options = new List<OptionInfo>
                         {
-                            new { answer = question.Option1, isCorrect = (question.CorrectOption == "") },
-                            new { answer = question.Option2, isCorrect = (question.CorrectOption == "") },
-                            new { answer = question.Option3, isCorrect = (question.CorrectOption == "") },
-                            new { answer = question.Option4, isCorrect = (question.CorrectOption == "") }
+                        new OptionInfo { Answer = question.Option1, IsCorrect = (question.CorrectOption == "") },
+                        new OptionInfo { Answer = question.Option2, IsCorrect = (question.CorrectOption == "") },
+                        new OptionInfo { Answer = question.Option3, IsCorrect = (question.CorrectOption == "") },
+                        new OptionInfo { Answer = question.Option4, IsCorrect = (question.CorrectOption == "") }
                         }
                     })
                     .ToList()
@@ -270,6 +270,7 @@ public class MainController : ControllerBase
 
         return Ok(chapterData);
     }
+
 }
 
 

@@ -1,303 +1,223 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 04:05 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: 127.0.0.1    Database: e_learning
+-- ------------------------------------------------------
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `e_learning`
---
-
--- --------------------------------------------------------
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `chapter`
 --
 
+DROP TABLE IF EXISTS `chapter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `chapter` (
-  `ChapterID` int(11) NOT NULL,
-  `ChapterName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `ChapterID` int NOT NULL AUTO_INCREMENT,
+  `ChapterName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ScoreChapter` int DEFAULT NULL,
+  PRIMARY KEY (`ChapterID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `chapter`
 --
 
-INSERT INTO `chapter` (`ChapterID`, `ChapterName`) VALUES
-(1, 'Introduction'),
-(2, 'Advanced Topics');
-
--- --------------------------------------------------------
+LOCK TABLES `chapter` WRITE;
+/*!40000 ALTER TABLE `chapter` DISABLE KEYS */;
+INSERT INTO `chapter` VALUES (1,'Introduction',NULL),(2,'Advanced Topics',NULL);
+/*!40000 ALTER TABLE `chapter` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `course`
 --
 
+DROP TABLE IF EXISTS `course`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `course` (
-  `CourseID` int(11) NOT NULL,
-  `CourseName` varchar(255) NOT NULL,
-  `ChapterID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `CourseID` int NOT NULL AUTO_INCREMENT,
+  `CourseName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ChapterID` int DEFAULT NULL,
+  PRIMARY KEY (`CourseID`),
+  KEY `ChapterID` (`ChapterID`),
+  CONSTRAINT `course_ibfk_1` FOREIGN KEY (`ChapterID`) REFERENCES `chapter` (`ChapterID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`CourseID`, `CourseName`, `ChapterID`) VALUES
-(1, 'Web Development Basics', 1),
-(2, 'React.js Fundamentals', 2);
-
--- --------------------------------------------------------
+LOCK TABLES `course` WRITE;
+/*!40000 ALTER TABLE `course` DISABLE KEYS */;
+INSERT INTO `course` VALUES (1,'Web Development Basics',1),(2,'React.js Fundamentals',2);
+/*!40000 ALTER TABLE `course` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `question`
 --
 
+DROP TABLE IF EXISTS `question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `question` (
-  `QuestionID` int(11) NOT NULL,
-  `QuestionText` varchar(255) NOT NULL,
-  `Option1` varchar(255) NOT NULL,
-  `Option2` varchar(255) NOT NULL,
-  `Option3` varchar(255) NOT NULL,
-  `Option4` varchar(255) NOT NULL,
-  `CorrectOption` varchar(255) NOT NULL,
-  `QuizID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `QuestionID` int NOT NULL AUTO_INCREMENT,
+  `QuestionText` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Option1` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Option2` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Option3` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Option4` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `CorrectOption` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `QuizID` int DEFAULT NULL,
+  PRIMARY KEY (`QuestionID`),
+  KEY `QuizID` (`QuizID`),
+  CONSTRAINT `question_ibfk_1` FOREIGN KEY (`QuizID`) REFERENCES `quiz` (`QuizID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`QuestionID`, `QuestionText`, `Option1`, `Option2`, `Option3`, `Option4`, `CorrectOption`, `QuizID`) VALUES
-(1, 'What does HTML stand for?', 'Hyper Text Markup Language', 'Highly Typed Machine Learning', 'Home Tool Markup Language', 'Hyper Transfer Markup Language', 'Hyper Text Markup Language', 1),
-(2, 'Which CSS property is used to change the background color of an element?', 'color', 'background-color', 'bgcolor', 'background-style', 'background-color', 1),
-(3, 'What is the core concept of React.js?', 'MVC Architecture', 'Virtual DOM', 'Two-way data binding', 'Dependency Injection', 'Virtual DOM', 2),
-(4, 'In React.js, what is used to pass data to a component from outside?', 'state', 'props', 'setState', 'data', 'props', 2);
-
--- --------------------------------------------------------
+LOCK TABLES `question` WRITE;
+/*!40000 ALTER TABLE `question` DISABLE KEYS */;
+INSERT INTO `question` VALUES (1,'What does HTML stand for?','Hyper Text Markup Language','Highly Typed Machine Learning','Home Tool Markup Language','Hyper Transfer Markup Language','Hyper Text Markup Language',1),(2,'Which CSS property is used to change the background color of an element?','color','background-color','bgcolor','background-style','background-color',1),(3,'What is the core concept of React.js?','MVC Architecture','Virtual DOM','Two-way data binding','Dependency Injection','Virtual DOM',2),(4,'In React.js, what is used to pass data to a component from outside?','state','props','setState','data','props',2);
+/*!40000 ALTER TABLE `question` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `quiz`
 --
 
+DROP TABLE IF EXISTS `quiz`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `quiz` (
-  `QuizID` int(11) NOT NULL,
-  `QuizTitle` varchar(255) NOT NULL,
-  `ChapterID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `QuizID` int NOT NULL AUTO_INCREMENT,
+  `QuizTitle` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ChapterID` int DEFAULT NULL,
+  PRIMARY KEY (`QuizID`),
+  KEY `ChapterID` (`ChapterID`),
+  CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`ChapterID`) REFERENCES `chapter` (`ChapterID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`QuizID`, `QuizTitle`, `ChapterID`) VALUES
-(1, 'HTML and CSS Quiz', 1),
-(2, 'React.js Quiz', 2);
-
--- --------------------------------------------------------
+LOCK TABLES `quiz` WRITE;
+/*!40000 ALTER TABLE `quiz` DISABLE KEYS */;
+INSERT INTO `quiz` VALUES (1,'HTML and CSS Quiz',1),(2,'React.js Quiz',2);
+/*!40000 ALTER TABLE `quiz` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `UserID` int(11) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `TotalScore` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `UserID` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `TotalScore` int DEFAULT '0',
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`UserID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`UserID`, `Username`, `Password`, `TotalScore`) VALUES
-(1, 'john_doe', 'password123', 0),
-(2, 'jane_smith', 'securepassword', 0);
-
--- --------------------------------------------------------
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'john_doe','password123',350,'example@example.com'),(2,'jane_smith','securepassword',0,'example2@example.com'),(3,'test','test',0,'test@gmail.com');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `userquiz`
 --
 
+DROP TABLE IF EXISTS `userquiz`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `userquiz` (
-  `UserQuizID` int(11) NOT NULL,
-  `UserID` int(11) DEFAULT NULL,
-  `QuizID` int(11) DEFAULT NULL,
-  `Score` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `UserQuizID` int NOT NULL AUTO_INCREMENT,
+  `UserID` int DEFAULT NULL,
+  `QuizID` int DEFAULT NULL,
+  `Score` int DEFAULT NULL,
+  PRIMARY KEY (`UserQuizID`),
+  KEY `UserID` (`UserID`),
+  KEY `QuizID` (`QuizID`),
+  CONSTRAINT `userquiz_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`),
+  CONSTRAINT `userquiz_ibfk_2` FOREIGN KEY (`QuizID`) REFERENCES `quiz` (`QuizID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `userquiz`
+--
+
+LOCK TABLES `userquiz` WRITE;
+/*!40000 ALTER TABLE `userquiz` DISABLE KEYS */;
+INSERT INTO `userquiz` VALUES (1,1,1,0),(2,1,1,0),(3,1,1,0),(4,1,1,50),(5,1,1,50),(6,1,1,100),(7,1,1,50),(8,1,1,100);
+/*!40000 ALTER TABLE `userquiz` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `video`
 --
 
+DROP TABLE IF EXISTS `video`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `video` (
-  `VideoID` int(11) NOT NULL,
-  `VideoTitle` varchar(255) NOT NULL,
-  `VideoURL` varchar(255) NOT NULL,
-  `CourseID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `VideoID` int NOT NULL AUTO_INCREMENT,
+  `VideoTitle` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `VideoURL` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `CourseID` int DEFAULT NULL,
+  PRIMARY KEY (`VideoID`),
+  KEY `CourseID` (`CourseID`),
+  CONSTRAINT `video_ibfk_1` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `video`
 --
 
-INSERT INTO `video` (`VideoID`, `VideoTitle`, `VideoURL`, `CourseID`) VALUES
-(1, 'HTML Basics', 'https://example.com/html-basics', 1),
-(2, 'CSS Fundamentals', 'https://example.com/css-fundamentals', 1),
-(3, 'Introduction to React.js', 'https://example.com/react-intro', 2),
-(4, 'State and Props in React.js', 'https://example.com/react-state-props', 2);
+LOCK TABLES `video` WRITE;
+/*!40000 ALTER TABLE `video` DISABLE KEYS */;
+INSERT INTO `video` VALUES (1,'HTML Basics','https://example.com/html-basics',1),(2,'CSS Fundamentals','https://example.com/css-fundamentals',1),(3,'Introduction to React.js','https://example.com/react-intro',2),(4,'State and Props in React.js','https://example.com/react-state-props',2);
+/*!40000 ALTER TABLE `video` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `chapter`
---
-ALTER TABLE `chapter`
-  ADD PRIMARY KEY (`ChapterID`);
-
---
--- Indexes for table `course`
---
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`CourseID`),
-  ADD KEY `ChapterID` (`ChapterID`);
-
---
--- Indexes for table `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`QuestionID`),
-  ADD KEY `QuizID` (`QuizID`);
-
---
--- Indexes for table `quiz`
---
-ALTER TABLE `quiz`
-  ADD PRIMARY KEY (`QuizID`),
-  ADD KEY `ChapterID` (`ChapterID`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`UserID`);
-
---
--- Indexes for table `userquiz`
---
-ALTER TABLE `userquiz`
-  ADD PRIMARY KEY (`UserQuizID`),
-  ADD KEY `UserID` (`UserID`),
-  ADD KEY `QuizID` (`QuizID`);
-
---
--- Indexes for table `video`
---
-ALTER TABLE `video`
-  ADD PRIMARY KEY (`VideoID`),
-  ADD KEY `CourseID` (`CourseID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `chapter`
---
-ALTER TABLE `chapter`
-  MODIFY `ChapterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `course`
---
-ALTER TABLE `course`
-  MODIFY `CourseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `question`
---
-ALTER TABLE `question`
-  MODIFY `QuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `quiz`
---
-ALTER TABLE `quiz`
-  MODIFY `QuizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `userquiz`
---
-ALTER TABLE `userquiz`
-  MODIFY `UserQuizID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `video`
---
-ALTER TABLE `video`
-  MODIFY `VideoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `course`
---
-ALTER TABLE `course`
-  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`ChapterID`) REFERENCES `chapter` (`ChapterID`);
-
---
--- Constraints for table `question`
---
-ALTER TABLE `question`
-  ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`QuizID`) REFERENCES `quiz` (`QuizID`);
-
---
--- Constraints for table `quiz`
---
-ALTER TABLE `quiz`
-  ADD CONSTRAINT `quiz_ibfk_1` FOREIGN KEY (`ChapterID`) REFERENCES `chapter` (`ChapterID`);
-
---
--- Constraints for table `userquiz`
---
-ALTER TABLE `userquiz`
-  ADD CONSTRAINT `userquiz_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`),
-  ADD CONSTRAINT `userquiz_ibfk_2` FOREIGN KEY (`QuizID`) REFERENCES `quiz` (`QuizID`);
-
---
--- Constraints for table `video`
---
-ALTER TABLE `video`
-  ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-12-05 22:33:44
