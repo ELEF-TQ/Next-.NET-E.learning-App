@@ -19,12 +19,7 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\6.0.0\build\net6.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\6.0.0\build\net6.0\Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-<<<<<<< HEAD:Server/E_learningAppBack/obj/E_learningAppBack.csproj.nuget.g.props
-    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\sdf\.nuget\packages\microsoft.extensions.apidescription.server\3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
-    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\sdf\.nuget\packages\microsoft.entityframeworkcore.tools\6.0.0</PkgMicrosoft_EntityFrameworkCore_Tools>
-=======
     <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\ZBOOK PRO\.nuget\packages\microsoft.extensions.apidescription.server\3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\ZBOOK PRO\.nuget\packages\microsoft.entityframeworkcore.tools\6.0.0</PkgMicrosoft_EntityFrameworkCore_Tools>
->>>>>>> b2a54a8132c7c9a677491c75c9163bf6a75ef333:Server/obj/E-learningApp.csproj.nuget.g.props
   </PropertyGroup>
 </Project>
