@@ -9,23 +9,27 @@ interface AuthState {
   error: string | null;
 }
 
+const getUserFromLocalStorage = (): any | null => {
+  const userJSON = localStorage.getItem('user');
+  return userJSON ? JSON.parse(userJSON) : null;
+};
+
 const initialState: AuthState = {
-  user: null,
+  user: getUserFromLocalStorage(), 
   token: null,
   status: 'idle',
   error: null,
 };
 
 const redirectLogIn = () => {
-  window.location.href = '/login';
+  window.location.href = 'auth/login';
 };
 
 const redirectMain = () => {
-  window.location.href ='/'
+  window.location.href = '/';
 };
 
-
-export const login = createAsyncThunk('auth/login', async (userData : any) => {
+export const login = createAsyncThunk('auth/login', async (userData: any) => {
   try {
     const response = await api.post('/auth/login', userData);
     return response.data;
@@ -58,7 +62,7 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         setCookie('token',  state.token );
         localStorage.setItem('user', JSON.stringify(state.user));
-        redirectMain()
+        redirectMain();
       })
       .addCase(login.rejected, (state, action) => {
         state.status = 'failed';
@@ -71,7 +75,7 @@ const authSlice = createSlice({
         state.status = 'succeeded';
         state.user = action.payload.user;
         state.token = action.payload.token;
-        redirectLogIn()
+        redirectLogIn();
       })
       .addCase(signup.rejected, (state, action) => {
         state.status = 'failed';

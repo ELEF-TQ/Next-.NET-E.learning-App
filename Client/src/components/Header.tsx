@@ -14,10 +14,8 @@ const Header: React.FC = () => {
   }, []);
 
   const handleLogout = () => {
-    // Effacer le token du localStorage lors de la déconnexion
     localStorage.removeItem('token');
     setIsLoggedIn(false);
-    // Rediriger vers la page d'accueil ou une autre page après la déconnexion
     router.push('/');
   };
 

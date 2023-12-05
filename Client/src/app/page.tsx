@@ -1,11 +1,27 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Video from '@/components/Video';
 import QuizData from '@/data/Quiz';
 import QuizQuestion from '@/components/QuizQuestion';
 import Sidebar from '@/components/Sidebar';
-
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/context/store';
+import { getChapter } from '@/context/QuizSlice';
 export default function Home() {
+
+  const dispatch = useDispatch<AppDispatch>();
+  const getUserFromLocalStorage = (): any | null => {
+    const userJSON = localStorage.getItem('user');
+    return userJSON ? JSON.parse(userJSON) : null;
+  };
+  
+  useEffect(()=> {
+    if(getUserFromLocalStorage()) {
+      dispatch(getChapter(1))
+    }else {
+      window.location.href = 'auth/login';
+    }
+  })
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Array<{ questionId: string; answer: string }>>(
     Array.from({ length: QuizData[0]?.questions.length }, () => ({ questionId: '', answer: '' }))
