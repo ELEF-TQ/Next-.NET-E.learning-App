@@ -4,6 +4,10 @@ const QuizData = [
     url: 'https://www.youtube.com/embed/RHFmsoiVtKE?t=295s',
   },
   {
+    type: 'video',
+    url: 'https://www.youtube.com/embed/RHFmsoiVtKE?t=295s',
+  },
+  {
     question: 'What type of framework is Next.js?',
     answerOptions: [
       { answer: 'Frontend' },
