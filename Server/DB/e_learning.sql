@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `chapter`;
 CREATE TABLE `chapter` (
   `ChapterID` int NOT NULL AUTO_INCREMENT,
   `ChapterName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `ScoreChapter` int DEFAULT NULL,
+  `ScoreChapter` double DEFAULT NULL,
   PRIMARY KEY (`ChapterID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -137,10 +137,10 @@ CREATE TABLE `user` (
   `UserID` int NOT NULL AUTO_INCREMENT,
   `Username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `Password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `TotalScore` int DEFAULT '0',
+  `TotalScore` double DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +149,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'john_doe','password123',350,'example@example.com'),(2,'jane_smith','securepassword',0,'example2@example.com'),(3,'test','test',0,'test@gmail.com');
+INSERT INTO `user` VALUES (1,'john_doe','password123',350,'example@example.com'),(2,'jane_smith','securepassword',0,'example2@example.com'),(3,'test','test',0,'test@gmail.com'),(4,'string','string',NULL,'string');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-05 22:33:44
+-- Dump completed on 2023-12-06  1:27:12
