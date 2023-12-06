@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers"
+    "\\E_learningAppBack",
+    "\\E_learningAppBack\\Controllers"
   ],
-  "SelectedNode": "\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\E_learningAppBack\\Controllers\\MainController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,31 +1,17 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD:Server/E_learningAppBack/obj/E_learningAppBack.csproj.nuget.dgspec.json
-    "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj": {}
+    "C:\\Users\\ZBOOK PRO\\OneDrive\\Desktop\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj": {
+    "C:\\Users\\ZBOOK PRO\\OneDrive\\Desktop\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
+        "projectUniqueName": "C:\\Users\\ZBOOK PRO\\OneDrive\\Desktop\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
         "projectName": "E_learningAppBack",
-        "projectPath": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
-        "packagesPath": "C:\\Users\\sdf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\",
-=======
-    "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\E-learningApp.csproj": {}
-  },
-  "projects": {
-    "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\E-learningApp.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\E-learningApp.csproj",
-        "projectName": "E-learningApp",
-        "projectPath": "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\E-learningApp.csproj",
+        "projectPath": "C:\\Users\\ZBOOK PRO\\OneDrive\\Desktop\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
         "packagesPath": "C:\\Users\\ZBOOK PRO\\.nuget\\packages\\",
-        "outputPath": "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\obj\\",
->>>>>>> b2a54a8132c7c9a677491c75c9163bf6a75ef333:Server/obj/E-learningApp.csproj.nuget.dgspec.json
+        "outputPath": "C:\\Users\\ZBOOK PRO\\OneDrive\\Desktop\\E_Learning\\Server\\E_learningAppBack\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

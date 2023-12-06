@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 rounded-md">
         <div className="flex justify-between items-center mx-auto max-w-screen-xl">
           {/* Logo à gauche */}
           <Link href="/" className="flex items-center">

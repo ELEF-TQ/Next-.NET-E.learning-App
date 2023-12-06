@@ -32,7 +32,7 @@ const QuizData = [
           {"answer": "Hyper Text Markup Language"},
           {"answer": "Highly Typed Machine Learning"},
           {"answer": "Home Tool Markup Language"},
-          {"answer": "Hyper Transfer Markup Language", "isCorrect": true}
+          {"answer": "Hyper Transfer Markup Language"}
         ]
       },
       {
@@ -40,27 +40,27 @@ const QuizData = [
         "text": "Which CSS property is used to change the background color of an element?",
         "options": [
           {"answer": "color"},
-          {"answer": "background-color", "isCorrect": true},
+          {"answer": "background-color"},
           {"answer": "bgcolor"},
           {"answer": "background-style"}
         ]
       },
       {
-        "id": 3,
+        "id": 4,
         "text": "What is the correct way to include external CSS in an HTML document?",
         "options": [
           {"answer": "<style src='styles.css'>"},
-          {"answer": "<link rel='stylesheet' type='text/css' href='styles.css'>", "isCorrect": true},
+          {"answer": "<link rel='stylesheet' type='text/css' href='styles.css'>"},
           {"answer": "<css>styles.css</css>"},
           {"answer": "<script type='text/css' src='styles.css'>"}
         ]
       },
       {
-        "id": 4,
+        "id": 3,
         "text": "In HTML, which tag is used to create an ordered list?",
         "options": [
           {"answer": "<ul>"},
-          {"answer": "<ol>", "isCorrect": true},
+          {"answer": "<ol>"},
           {"answer": "<li>"},
           {"answer": "<list>"}
         ]
