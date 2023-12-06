@@ -2,11 +2,7 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 
 const api = axios.create({
-  baseURL: 'https://localhost:5000', 
-  timeout: 5000, 
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: 'https://localhost:7144/api', 
 });
 
 api.interceptors.request.use(

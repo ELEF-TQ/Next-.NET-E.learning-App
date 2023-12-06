@@ -2,11 +2,12 @@
 
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { login } from '@/context/AuthSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
 import { AppDispatch } from '@/context/store';
 
 const Login: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const { status } = useSelector((state:any)=>state.auth)
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -68,7 +69,7 @@ const Login: React.FC = () => {
                 type="submit"
                 className="w-full px-4 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg transition duration-300 ease-in-out dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Log in
+               {status === "loading" ? "loading" : "Login"}
               </button>
             </form>
           </div>
