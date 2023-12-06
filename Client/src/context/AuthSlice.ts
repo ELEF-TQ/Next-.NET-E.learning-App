@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '@/api';
 import { setCookie } from 'cookies-next';
+import getUserFromLocalStorage from '@/utils/getLocalUser';
 
 interface AuthState {
   user: any | null; 
@@ -9,13 +10,9 @@ interface AuthState {
   error: string | null;
 }
 
-const getUserFromLocalStorage = (): any | null => {
-  const userJSON = localStorage.getItem('user');
-  return userJSON ? JSON.parse(userJSON) : null;
-};
 
 const initialState: AuthState = {
-  user: getUserFromLocalStorage(), 
+  user: getUserFromLocalStorage() ,
   token: null,
   status: 'idle',
   error: null,
@@ -31,7 +28,7 @@ const redirectMain = () => {
 
 export const login = createAsyncThunk('auth/login', async (userData: any) => {
   try {
-    const response = await api.post('/auth/login', userData);
+    const response = await api.post('/chapters/login', userData);
     return response.data;
   } catch (error) {
     throw new Error('An error occurred during login.');
@@ -40,7 +37,7 @@ export const login = createAsyncThunk('auth/login', async (userData: any) => {
 
 export const signup = createAsyncThunk('auth/signup', async (userData: any) => {
   try {
-    const response = await api.post('/auth/register', userData);
+    const response = await api.post('/chapters/register', userData);
     return response.data;
   } catch (error) {
     throw new Error('An error occurred during signup.');

@@ -1,6 +1,6 @@
 // Sidebar.tsx
 import { useDispatch } from 'react-redux';
-import { getChapter } from '@/context/QuizSlice';
+import { getChapter } from '@/context/ChapterSlice';
 import {AppDispatch } from '@/context/store'
 const Sidebar = () => { 
 
@@ -15,7 +15,7 @@ const Sidebar = () => {
     <>
       <aside
         id="default-sidebar"
-        className="w-64 transition-transform -translate-x-full sm:translate-x-0"
+        className="w-64 transition-transform -translate-x-full sm:translate-x-0 flex   flex-col justify-center items-center"
         aria-label="Sidebar"
       >
         <div className=" h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">

@@ -46,7 +46,7 @@ const QuizData = [
         ]
       },
       {
-        "id": 3,
+        "id": 4,
         "text": "What is the correct way to include external CSS in an HTML document?",
         "options": [
           {"answer": "<style src='styles.css'>"},
@@ -56,7 +56,7 @@ const QuizData = [
         ]
       },
       {
-        "id": 4,
+        "id": 3,
         "text": "In HTML, which tag is used to create an ordered list?",
         "options": [
           {"answer": "<ul>"},

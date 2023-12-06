@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '@/api';
 
 interface QuizState {
-  chapterScore: number | null ;
+  chapterScore: any | null ;
   chapter: any | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
 
 const initialState: QuizState = {
-  chapterScore: null,
+  chapterScore: 45,
   chapter: null,
   status: 'idle',
   error: null,
@@ -17,17 +17,17 @@ const initialState: QuizState = {
 
 export const getChapter = createAsyncThunk('quiz/getChapter', async (chapterId: number) => {
   try {
-    const response = await api.get(`chapters/${chapterId}`);
+    const response = await api.get(`chapters/chapterdata/${chapterId}`);
     return response.data;
   } catch (error) {
     throw new Error('An error occurred while fetching the chapter.');
   }
 });
 
-export const answerChapter = createAsyncThunk('quiz/answerChapter', async (chapterData: any) => {
+export const answerChapter = createAsyncThunk('quiz/answerChapter', async ({ chapterId, answers }: { chapterId: number; answers: any }) => {
   try {
-    console.log(chapterData)
-    const response = await api.post(`chapters/${chapterData.chapterId}`, chapterData.answers);
+    console.log(answers)
+    const response = await api.post(`chapters/${chapterId}`, answers);
     return response.data;
   } catch (error) {
     throw new Error('An error occurred while answering the chapter.');
