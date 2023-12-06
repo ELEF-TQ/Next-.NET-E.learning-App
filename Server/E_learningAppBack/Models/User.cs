@@ -14,7 +14,7 @@ namespace E_learningAppBack.Models
         public string Email { get; set; } = null!;
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public int? TotalScore { get; set; }
+        public double? TotalScore { get; set; }
 
         public virtual ICollection<Userquiz> Userquizzes { get; set; }
     }

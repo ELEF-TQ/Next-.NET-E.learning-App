@@ -1,4 +1,6 @@
-﻿namespace E_learningAppBack.Models
+﻿using System.Text.Json.Serialization;
+
+namespace E_learningAppBack.Models
 {
     public class ChapterData
     {
@@ -25,7 +27,7 @@
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string VideoUrl { get; set; }
+        public string url { get; set; }
     }
 
     public class QuizInfo
@@ -44,6 +46,8 @@
     public class OptionInfo
     {
         public string Answer { get; set; }
+
+        [JsonIgnore]
         public bool IsCorrect { get; set; }
     }
 

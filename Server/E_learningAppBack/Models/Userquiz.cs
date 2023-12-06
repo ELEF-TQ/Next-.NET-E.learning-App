@@ -8,7 +8,7 @@ namespace E_learningAppBack.Models
         public int UserQuizId { get; set; }
         public int? UserId { get; set; }
         public int? QuizId { get; set; }
-        public int? Score { get; set; }
+        public double? Score { get; set; }
 
         public virtual Quiz? Quiz { get; set; }
         public virtual User? User { get; set; }

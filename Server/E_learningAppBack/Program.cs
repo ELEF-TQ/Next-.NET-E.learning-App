@@ -13,6 +13,7 @@ builder.Services.AddDbContext<e_learningContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 
+
 });
 
 builder.Services.AddSwaggerGen(c =>

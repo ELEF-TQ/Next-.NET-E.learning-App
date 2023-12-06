@@ -1,17 +1,18 @@
 ﻿namespace E_learningAppBack.Models
 {
-    public class UserAnswerModel
+    public class AnswerModel
     {
-        public int UserID { get; set; }
-        public int QuizID { get; set; }
-        public List<UserAnswer> Answers { get; set; }
-        public int ChapterID { get; set;  }
+        public int UserId { get; set; }
+        public int QuizId { get; set; }
+        public List<QuestionAnswer> Questions { get; set; }
     }
 
-    public class UserAnswer
+    public class QuestionAnswer
     {
-        public int QuestionID { get; set; }
-        public string SelectedOption { get; set; }
+        public int QuestionId { get; set; }
+        public string Answer { get; set; }
     }
+
+
 
 }

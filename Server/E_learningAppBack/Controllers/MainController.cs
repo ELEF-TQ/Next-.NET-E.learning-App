@@ -54,6 +54,7 @@ public class MainController : ControllerBase
         return Ok(new { Token = token,
             User = new
             {
+                Id = user.UserId,
                 Username = user.Username,
                 Email = user.Email,
                 TotalScore = user.TotalScore
@@ -71,139 +72,60 @@ public class MainController : ControllerBase
         return token;
     }
 
-    [HttpGet("chapters")]
-    public async Task<ActionResult<IEnumerable<Chapter>>> GetChapters()
+    [HttpPost("{chapterId}")]
+    public async Task<IActionResult> SubmitChapterScore(int chapterId, [FromBody] AnswerModel scoreRequest)
     {
-        var chapters = await _context.Chapters.ToListAsync();
-
-        if (chapters == null || chapters.Count == 0)
-        {
-            return NotFound();
-        }
-
-        return Ok(chapters);
-    }
-
-    [HttpPost("courses")]
-    public async Task<ActionResult<IEnumerable<Course>>> GetCoursesByChapter([FromBody] int chapterId)
-    {
-        var courses = await _context.Courses
-            .Where(c => c.ChapterId == chapterId)
-            .ToListAsync();
-
-        if (courses == null || courses.Count == 0)
-        {
-            return NotFound();
-        }
-
-        return Ok(courses); 
-    }
-
-    [HttpPost("video")]
-    public async Task<ActionResult<Video>> GetVideoForCourse([FromBody] int courseId)
-    {
-        var video = await _context.Videos
-            .FirstOrDefaultAsync(v => v.CourseId == courseId);
-
-        if (video == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(video); 
-    }
-
-    [HttpPost("quizzes")]
-    public async Task<ActionResult<IEnumerable<Quiz>>> GetQuizByChapter([FromBody] int chapterId)
-    {
-        var quizzes = await _context.Quizzes
-            .Where(q => q.ChapterId == chapterId)
-            .ToListAsync();
-
-        if (quizzes == null || quizzes.Count == 0)
-        {
-            return NotFound(); 
-        }
-
-        return Ok(quizzes); 
-    }
-
-    [HttpPost("questions")]
-    public async Task<ActionResult<IEnumerable<Question>>> GetQuestionsByQuiz([FromBody] int quizId)
-    {
-        var questions = await _context.Questions
-            .Where(q => q.QuizId == quizId)
-            .ToListAsync();
+        var questions = await _context.Questions.Where(q => q.QuizId == scoreRequest.QuizId).ToListAsync();
 
         if (questions == null || questions.Count == 0)
-        {
-            return NotFound(); 
-        }
-
-        return Ok(questions); 
-    }
-    [HttpPost("answer")]
-    public async Task<ActionResult<double>> SubmitQuizAnswers([FromBody] UserAnswerModel userAnswers)
-    {
-        var quizQuestions = await _context.Questions
-                  .Where(q => q.QuizId == userAnswers.QuizID)
-                  .ToListAsync();
-
-        if (quizQuestions == null || quizQuestions.Count == 0)
         {
             return NotFound("No questions found for the given QuizID");
         }
 
-        double totalQuestions = quizQuestions.Count;
-        double correctAnswers = 0;
+        int correctAnswers = 0;
+        double totalQuestions = questions.Count;
 
-        foreach (var answer in userAnswers.Answers)
+        foreach (var answer in scoreRequest.Questions)
         {
-            var question = quizQuestions.FirstOrDefault(q => q.QuestionId == answer.QuestionID);
+            var question = questions.FirstOrDefault(q => q.QuestionId == answer.QuestionId);
 
-            if (question != null && question.CorrectOption == answer.SelectedOption)
+            if (question != null && question.CorrectOption == answer.Answer)
             {
                 correctAnswers++;
             }
         }
 
-        int score = (int)((correctAnswers / totalQuestions) * 100);
+        double scorePercentage = (correctAnswers / totalQuestions) * 100.0; // Ensure division with double
 
-        // Update chapter's ScoreChapter
-        var chapter = await _context.Chapters.FirstOrDefaultAsync(c => c.ChapterId == userAnswers.ChapterID);
+        var chapter = await _context.Chapters.FindAsync(chapterId);
         if (chapter != null)
         {
-            // Update the ScoreChapter with the calculated score
-            chapter.ScoreChapter = score; // Assuming ScoreChapter is of type INT
+            chapter.ScoreChapter = (scorePercentage); // Assign double directly
             await _context.SaveChangesAsync();
+        }
+        else
+        {
+            return NotFound("Chapter not found");
         }
 
         var userQuiz = new Userquiz
         {
-            UserId = userAnswers.UserID,
-            QuizId = userAnswers.QuizID,
-            Score = (int?)score
+            UserId = scoreRequest.UserId,
+            QuizId = scoreRequest.QuizId,
+            Score = scorePercentage, // Assign double directly
         };
 
         _context.Userquizzes.Add(userQuiz);
         await _context.SaveChangesAsync();
 
-        // Update user's TotalScore
-        var user = await _context.Users.FindAsync(userAnswers.UserID);
-        if (user != null)
-        {
-            user.TotalScore = await _context.Userquizzes
-                .Where(uq => uq.UserId == userAnswers.UserID)
-                .SumAsync(uq => uq.Score);
-
-            await _context.SaveChangesAsync();
-        }
-
-        return Ok(new { Score = score, totalQuestions, correctAnswers });
+        return Ok(new { Score = scorePercentage });
     }
 
-    [HttpGet("chapterdata")]
-    public IActionResult GetQuizDataByChapter([FromQuery] int chapterId)
+
+
+
+    [HttpGet("chapterdata/{chapterId}")]
+    public IActionResult GetQuizDataByChapter(int chapterId)
     {
         var chapterData = _context.Chapters
             .Where(chapter => chapter.ChapterId == chapterId)
@@ -231,7 +153,7 @@ public class MainController : ControllerBase
                     {
                         Id = video.VideoId,
                         Title = video.VideoTitle,
-                        VideoUrl = video.VideoUrl
+                        url = video.VideoUrl
                     })
                     .ToList(),
                 Quiz = _context.Quizzes
@@ -253,10 +175,10 @@ public class MainController : ControllerBase
                         Text = question.QuestionText,
                         Options = new List<OptionInfo>
                         {
-                        new OptionInfo { Answer = question.Option1, IsCorrect = (question.CorrectOption == "") },
-                        new OptionInfo { Answer = question.Option2, IsCorrect = (question.CorrectOption == "") },
-                        new OptionInfo { Answer = question.Option3, IsCorrect = (question.CorrectOption == "") },
-                        new OptionInfo { Answer = question.Option4, IsCorrect = (question.CorrectOption == "") }
+                        new OptionInfo { Answer = question.Option1 },
+                        new OptionInfo { Answer = question.Option2 },
+                        new OptionInfo { Answer = question.Option3 },
+                        new OptionInfo { Answer = question.Option4 },
                         }
                     })
                     .ToList()
