@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BlZEEkj80nvbRZDlqz0LvrmBpv/KaWBjlVEi9zHwpqYXjeSddy3F+eA4fFl0r6gRpbQ64QhMEjWmBhsl5Tcp2Q==",
+  "dgSpecHash": "TToz+3WtxvhCj2zLgTR5VY98AggY95AzuNYpLgpFc7ehjLdfzlkiySpUqmQYVdU9WXbEekDXuizcweNiqO6VaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ZBOOK PRO\\OneDrive\\Desktop\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
+  "projectFilePath": "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ZBOOK PRO\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ZBOOK PRO\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",

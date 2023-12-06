@@ -38,7 +38,11 @@ body {
   padding: 10px;
 }
 
-
+.Footer {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+}
 
 
 
@@ -72,7 +76,13 @@ input[type="radio"]:checked:after {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 5rem 1rem;
 }
+.content .Main {
+  height: 30rem;
+}
+
+
 .content-inside {
   width: 80%;
   height: 150%;

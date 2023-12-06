@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 import { AppDispatch } from '@/context/store';
 import { signup } from '@/context/AuthSlice';
 
@@ -13,6 +13,7 @@ interface UserData {
 
 const Signup: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const { status } = useSelector((state:any)=>state.auth)
 
   const [userData, setUserData] = useState<UserData>({
     username: '',
@@ -88,12 +89,12 @@ const Signup: React.FC = () => {
                 type="submit"
                 className="w-full px-4 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg transition duration-300 ease-in-out dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Sign up
+               {status === "loading" ? "loading" : "Sign up"}
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 I have already an account !{' '}
                 <a href="/auth/login" className="text-primary-600 hover:underline dark:text-primary-500">
-                  Log in
+                   Log in
                 </a>
               </p>
             </form>
