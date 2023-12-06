@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `chapter`;
 CREATE TABLE `chapter` (
   `ChapterID` int NOT NULL AUTO_INCREMENT,
   `ChapterName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `ScoreChapter` double DEFAULT NULL,
+  `ScoreChapter` double DEFAULT '0',
   PRIMARY KEY (`ChapterID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,7 +36,7 @@ CREATE TABLE `chapter` (
 
 LOCK TABLES `chapter` WRITE;
 /*!40000 ALTER TABLE `chapter` DISABLE KEYS */;
-INSERT INTO `chapter` VALUES (1,'Introduction',NULL),(2,'Advanced Topics',NULL);
+INSERT INTO `chapter` VALUES (1,'Introduction',100),(2,'Advanced Topics',0);
 /*!40000 ALTER TABLE `chapter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +140,7 @@ CREATE TABLE `user` (
   `TotalScore` double DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +149,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'john_doe','password123',350,'example@example.com'),(2,'jane_smith','securepassword',0,'example2@example.com'),(3,'test','test',0,'test@gmail.com'),(4,'string','string',NULL,'string');
+INSERT INTO `user` VALUES (1,'john_doe','password123',350,'example@example.com'),(2,'jane_smith','securepassword',0,'example2@example.com'),(3,'test','test',0,'test@gmail.com'),(4,'string','string',NULL,'string'),(5,'string43','string',NULL,'string');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +170,7 @@ CREATE TABLE `userquiz` (
   KEY `QuizID` (`QuizID`),
   CONSTRAINT `userquiz_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`),
   CONSTRAINT `userquiz_ibfk_2` FOREIGN KEY (`QuizID`) REFERENCES `quiz` (`QuizID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +179,7 @@ CREATE TABLE `userquiz` (
 
 LOCK TABLES `userquiz` WRITE;
 /*!40000 ALTER TABLE `userquiz` DISABLE KEYS */;
-INSERT INTO `userquiz` VALUES (1,1,1,0),(2,1,1,0),(3,1,1,0),(4,1,1,50),(5,1,1,50),(6,1,1,100),(7,1,1,50),(8,1,1,100);
+INSERT INTO `userquiz` VALUES (1,1,1,0),(2,1,1,0),(3,1,1,0),(4,1,1,50),(5,1,1,50),(6,1,1,100),(7,1,1,50),(8,1,1,100),(9,1,1,0),(10,1,1,0),(11,1,1,0),(12,1,1,0),(13,1,1,0),(14,1,1,100),(15,1,1,0),(16,1,1,0),(17,1,1,0),(18,1,1,0),(19,1,1,50),(20,1,1,0),(21,1,1,50),(22,1,1,100),(23,1,1,100);
 /*!40000 ALTER TABLE `userquiz` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-06  1:27:12
+-- Dump completed on 2023-12-06 23:27:40

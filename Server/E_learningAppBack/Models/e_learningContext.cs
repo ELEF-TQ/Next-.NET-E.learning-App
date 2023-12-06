@@ -48,9 +48,9 @@ namespace E_learningAppBack.Models
 
                 entity.Property(e => e.ChapterName).HasMaxLength(255);
 
-                entity.Property(e => e.ScoreChapter).HasMaxLength(255);
+                entity.Property(e => e.ScoreChapter).HasColumnName("ScoreChapter"); 
 
-                
+
             });
 
             modelBuilder.Entity<Course>(entity =>

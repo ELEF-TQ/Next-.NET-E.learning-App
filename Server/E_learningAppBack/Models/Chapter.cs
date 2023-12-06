@@ -12,7 +12,7 @@ namespace E_learningAppBack.Models
         }
 
         public int ChapterId { get; set; }
-        public string ChapterName { get; set; } = null!;
+        public string ChapterName { get; set; } 
         public double ScoreChapter { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }

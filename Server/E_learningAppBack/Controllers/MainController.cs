@@ -75,6 +75,7 @@ public class MainController : ControllerBase
     [HttpPost("{chapterId}")]
     public async Task<IActionResult> SubmitChapterScore(int chapterId, [FromBody] AnswerModel scoreRequest)
     {
+        // Fetch questions related to the quiz
         var questions = await _context.Questions.Where(q => q.QuizId == scoreRequest.QuizId).ToListAsync();
 
         if (questions == null || questions.Count == 0)
@@ -82,9 +83,11 @@ public class MainController : ControllerBase
             return NotFound("No questions found for the given QuizID");
         }
 
-        int correctAnswers = 0;
+        double correctAnswers = 0;
         double totalQuestions = questions.Count;
+        
 
+        // Check each answer against the correct options
         foreach (var answer in scoreRequest.Questions)
         {
             var question = questions.FirstOrDefault(q => q.QuestionId == answer.QuestionId);
@@ -92,21 +95,32 @@ public class MainController : ControllerBase
             if (question != null && question.CorrectOption == answer.Answer)
             {
                 correctAnswers++;
+                Console.WriteLine(correctAnswers);
             }
+
         }
+        Console.WriteLine(correctAnswers);
+        Console.WriteLine(totalQuestions);
 
-        double scorePercentage = (correctAnswers / totalQuestions) * 100.0; // Ensure division with double
 
-        var chapter = await _context.Chapters.FindAsync(chapterId);
+
+        double scorePercentage = (correctAnswers / totalQuestions) *100.0 ;  // Ensure division with double
+        Console.WriteLine(scorePercentage);
+
+
+        var chapter = _context.Chapters.Find(chapterId);
         if (chapter != null)
         {
-            chapter.ScoreChapter = (scorePercentage); // Assign double directly
-            await _context.SaveChangesAsync();
+            chapter.ScoreChapter = scorePercentage; // Assign double directly
+            _context.SaveChanges();
         }
         else
         {
             return NotFound("Chapter not found");
         }
+
+        //Console.WriteLine(chapter);
+
 
         var userQuiz = new Userquiz
         {
@@ -120,7 +134,6 @@ public class MainController : ControllerBase
 
         return Ok(new { Score = scorePercentage });
     }
-
 
 
 
