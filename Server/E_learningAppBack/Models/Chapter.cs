@@ -14,6 +14,7 @@ namespace E_learningAppBack.Models
         public int ChapterId { get; set; }
         public string ChapterName { get; set; } 
         public double ScoreChapter { get; set; }
+        public int? UserID { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }
         public virtual ICollection<Quiz> Quizzes { get; set; }

@@ -1024,19 +1024,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
       "projectName": "E_learningAppBack",
       "projectPath": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
       "packagesPath": "C:\\Users\\sdf\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\",
-=======
-      "projectUniqueName": "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
-      "projectName": "E_learningAppBack",
-      "projectPath": "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\E_learningAppBack\\E_learningAppBack.csproj",
-      "packagesPath": "C:\\Users\\ZBOOK PRO\\.nuget\\packages\\",
-      "outputPath": "C:\\OWN\\Projects\\.NET\\E_Learning\\Server\\E_learningAppBack\\obj\\",
->>>>>>> d77a0aa82df506b93c00cbbc0dafdb8f73e8e230
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1139,5 +1131,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.311\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
