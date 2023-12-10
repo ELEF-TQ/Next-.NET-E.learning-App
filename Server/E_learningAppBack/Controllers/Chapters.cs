@@ -133,6 +133,7 @@ public class Chapters : ControllerBase
             var chapter = _context.Chapters.Find(chapterId);
             if (chapter != null)
             {
+                chapter.UserID = scoreRequest.UserId; 
                 chapter.ScoreChapter = scorePercentage;
                 _context.SaveChanges();
             }
@@ -181,6 +182,14 @@ public class Chapters : ControllerBase
 
             double totalScore = userChapters.Sum(chapter => chapter.ScoreChapter);
 
+            var Chapters = await _context.Chapters.ToListAsync();
+
+            int totalChapters = Chapters.Count;
+
+
+            double averageScore = totalScore / totalChapters; 
+
+
             var user = await _context.Users.FindAsync(userId);
 
             if (user == null)
@@ -188,12 +197,18 @@ public class Chapters : ControllerBase
                 return NotFound("User not found");
             }
 
-            user.TotalScore = totalScore;
+            user.TotalScore = averageScore;
 
             await _context.SaveChangesAsync();
 
-            return Ok(new { TotalScore = totalScore });
-
+            if (averageScore < 50)
+            {
+                return Ok("Sorry, you did not succeed to get your certificate.");
+            }
+            else
+            {
+                return Ok(new { TotalScore = averageScore });
+            }
         }
         catch (Exception ex)
         {
@@ -202,6 +217,7 @@ public class Chapters : ControllerBase
 
         }
     }
+
 
 
 
