@@ -28,7 +28,7 @@ const redirectMain = () => {
 
 export const login = createAsyncThunk('auth/login', async (userData: any) => {
   try {
-    const response = await api.post('/chapters/login', userData);
+    const response = await api.post('/auth/login', userData);
     return response.data;
   } catch (error) {
     throw new Error('An error occurred during login.');
@@ -37,7 +37,7 @@ export const login = createAsyncThunk('auth/login', async (userData: any) => {
 
 export const signup = createAsyncThunk('auth/signup', async (userData: any) => {
   try {
-    const response = await api.post('/chapters/register', userData);
+    const response = await api.post('/auth/register', userData);
     return response.data;
   } catch (error) {
     throw new Error('An error occurred during signup.');
