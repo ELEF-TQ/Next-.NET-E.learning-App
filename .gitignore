@@ -1,36 +1,117 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
 
-# testing
-/coverage
+# Visual Studio Code
+.vscode/
 
-# next.js
-/.next/
-/out/
+# JetBrains Rider
+.idea/
 
-# production
-/build
+# NuGet
+*.nupkg
+*.pupkg
+*.snupkg
 
-# misc
-.DS_Store
-*.pem
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# debug
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Debug files
+pdb/
+*.pdb
+*.log
+*.log.xml
+
+# Package files
+*.nupkg
+*.pupkg
+*.snupkg
+
+# VS Code directories
+.vscode/
+
+# Node.js dependencies and build artifacts
+node_modules/
+package-lock.json
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# local env files
-.env*.local
+# .NET build output
+bin/
+obj/
 
-# vercel
-.vercel
+# Visual Studio files
+.vs2019/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.usertasks
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Rider files
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Debug files
+pdb/
+*.pdb
+*.log
+*.log.xml
+
+# Resharper
+_ReSharper*/
+
+# Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
