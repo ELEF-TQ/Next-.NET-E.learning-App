@@ -34,8 +34,8 @@ export const answerChapter = createAsyncThunk('quiz/answerChapter', async ({ cha
   }
 });
 
-const quizSlice = createSlice({
-  name: 'quiz',
+const chapterSlice = createSlice({
+  name: 'cha[ter',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -46,6 +46,8 @@ const quizSlice = createSlice({
       .addCase(getChapter.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.chapter = action.payload;
+        console.log(state.chapter);
+        
       })
       .addCase(getChapter.rejected, (state, action) => {
         state.status = 'failed';
@@ -65,4 +67,4 @@ const quizSlice = createSlice({
   },
 });
 
-export default quizSlice.reducer;
+export default chapterSlice.reducer;

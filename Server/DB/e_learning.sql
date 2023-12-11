@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2023 at 12:15 AM
+-- Generation Time: Dec 11, 2023 at 11:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,9 +39,9 @@ CREATE TABLE `chapter` (
 --
 
 INSERT INTO `chapter` (`ChapterID`, `ChapterName`, `ScoreChapter`, `UserID`) VALUES
-(1, 'Frontend roadmap', 0, 1),
-(2, 'Backend roadmap', 0, 1),
-(3, 'DevOps', 0, 1);
+(1, 'Frontend roadmap', NULL, 1),
+(2, 'Backend roadmap', NULL, 1),
+(3, 'DevOps', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -154,15 +154,6 @@ CREATE TABLE `userquiz` (
   `Score` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `userquiz`
---
-
-INSERT INTO `userquiz` (`UserQuizID`, `UserID`, `QuizID`, `Score`) VALUES
-(1, 1, 1, NULL),
-(2, 1, 2, NULL),
-(3, 1, 3, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -181,12 +172,12 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `video` (`VideoID`, `VideoTitle`, `VideoURL`, `CourseID`) VALUES
-(1, 'Frontend roadmap video 1', 'https://www.youtube.com/watch?v=4ofEbImyLdY', 1),
-(2, 'Frontend roadmap video 2', 'https://www.youtube.com/watch?v=4ofEbImyLdY', 1),
-(3, 'Backend roadmap video 1', 'https://www.youtube.com/watch?v=xw47gcO9oRA', 2),
-(4, 'Backend roadmap video 2', 'https://www.youtube.com/watch?v=xw47gcO9oRA', 2),
-(5, 'DevOps video 1', 'https://www.youtube.com/watch?v=XYTS4PCE3pA&list=PL2bxyMnW6o4v9sorfXw5Ao_Z8wTlc_ycQ', 3),
-(6, 'DevOps video 2', 'https://www.youtube.com/watch?v=XYTS4PCE3pA&list=PL2bxyMnW6o4v9sorfXw5Ao_Z8wTlc_ycQ', 3);
+(1, 'Frontend roadmap video 1', '4ofEbImyLdY', 1),
+(2, 'Frontend roadmap video 2', '309beMyhXtg', 1),
+(3, 'Backend roadmap video 1', 'xw47gcO9oRA', 2),
+(4, 'Backend roadmap video 2', '_ee38nL13mE', 2),
+(5, 'DevOps video 1', 'XYTS4PCE3pA', 3),
+(6, 'DevOps video 2', '7NUmA81ehyk', 3);
 
 --
 -- Indexes for dumped tables
@@ -279,7 +270,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `userquiz`
 --
 ALTER TABLE `userquiz`
-  MODIFY `UserQuizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `UserQuizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `video`
