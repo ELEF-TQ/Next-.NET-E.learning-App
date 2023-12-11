@@ -15,13 +15,11 @@ public class Chapters : ControllerBase
     {
         _context = context;
     }
-
     [HttpGet("{chapterId}")]
     public IActionResult GetQuizDataByChapter(int chapterId)
     {
         try
         {
-
             var chapterData = _context.Chapters
                 .Where(chapter => chapter.ChapterId == chapterId)
                 .Select(chapter => new ChapterData
@@ -40,10 +38,7 @@ public class Chapters : ControllerBase
                         })
                         .FirstOrDefault(),
                     Videos = _context.Videos
-                        .Where(video => video.CourseId == _context.Courses
-                            .Where(course => course.ChapterId == chapter.ChapterId)
-                            .Select(course => course.CourseId)
-                            .FirstOrDefault())
+                        .Where(video => video.Course.ChapterId == chapter.ChapterId)
                         .Select(video => new VideoInfo
                         {
                             Id = video.VideoId,
@@ -60,20 +55,17 @@ public class Chapters : ControllerBase
                         })
                         .FirstOrDefault(),
                     Questions = _context.Questions
-                        .Where(question => question.QuizId == _context.Quizzes
-                            .Where(quiz => quiz.ChapterId == chapter.ChapterId)
-                            .Select(quiz => quiz.QuizId)
-                            .FirstOrDefault())
+                        .Where(question => question.Quiz.ChapterId == chapter.ChapterId)
                         .Select(question => new QuestionInfo
                         {
                             Id = question.QuestionId,
                             Text = question.QuestionText,
                             Options = new List<OptionInfo>
                             {
-                        new OptionInfo { Answer = question.Option1 },
-                        new OptionInfo { Answer = question.Option2 },
-                        new OptionInfo { Answer = question.Option3 },
-                        new OptionInfo { Answer = question.Option4 },
+                            new OptionInfo { Answer = question.Option1 },
+                            new OptionInfo { Answer = question.Option2 },
+                            new OptionInfo { Answer = question.Option3 },
+                            new OptionInfo { Answer = question.Option4 },
                             }
                         })
                         .ToList()
@@ -86,15 +78,13 @@ public class Chapters : ControllerBase
             }
 
             return Ok(chapterData);
-
         }
         catch (Exception ex)
         {
             return StatusCode(500, $"An error occurred while processing the request : {ex.Message}");
-
-
         }
     }
+
 
     [HttpPost("{chapterId}")]
     public async Task<IActionResult> SubmitChapterScore(int chapterId, [FromBody] AnswerModel scoreRequest)

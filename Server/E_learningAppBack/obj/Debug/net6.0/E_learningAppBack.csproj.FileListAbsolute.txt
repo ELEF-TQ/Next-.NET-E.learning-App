@@ -64,8 +64,6 @@ C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\E_lear
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\E_learningAppBack.csproj.CoreCompileInputs.cache
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\E_learningAppBack.MvcApplicationPartsAssemblyInfo.cs
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\E_learningAppBack.MvcApplicationPartsAssemblyInfo.cache
-C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\E_learningAppBack.RazorAssemblyInfo.cache
-C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\E_learningAppBack.RazorAssemblyInfo.cs
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\staticwebassets\msbuild.E_learningAppBack.Microsoft.AspNetCore.StaticWebAssets.props
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\staticwebassets\msbuild.build.E_learningAppBack.props
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.E_learningAppBack.props
@@ -73,9 +71,7 @@ C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\static
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\staticwebassets.pack.json
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\staticwebassets.build.json
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\staticwebassets.development.json
-C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\scopedcss\bundle\E_learningAppBack.styles.css
-C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\scopedcss\projectbundle\E_learningAppBack.bundle.scp.css
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\E_learningAppBack.csproj.CopyComplete
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\E_learningAppBack.dll
 C:\OWN\Projects\.NET\E_Learning\Server\E_learningAppBack\obj\Debug\net6.0\refint\E_learningAppBack.dll

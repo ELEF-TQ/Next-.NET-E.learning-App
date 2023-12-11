@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 
 const api = axios.create({
-  baseURL: 'https://localhost:7144/api', 
+  baseURL: 'https://localhost:7144/api/', 
 });
 
 api.interceptors.request.use(

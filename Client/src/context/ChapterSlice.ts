@@ -17,7 +17,7 @@ const initialState: QuizState = {
 
 export const getChapter = createAsyncThunk('quiz/getChapter', async (chapterId: number) => {
   try {
-    const response = await api.get(`chapters/chapterdata/${chapterId}`);
+    const response = await api.get(`chapters/${chapterId}`);
     return response.data;
   } catch (error) {
     throw new Error('An error occurred while fetching the chapter.');
