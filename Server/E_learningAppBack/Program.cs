@@ -1,4 +1,4 @@
-using E_learningAppBack.Models;
+using E_learningAppBack.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 

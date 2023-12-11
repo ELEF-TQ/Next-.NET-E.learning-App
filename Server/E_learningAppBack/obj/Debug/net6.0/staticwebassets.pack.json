@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\E_learningAppBack.bundle.scp.css",
-      "PackagePath": "staticwebassets\\E_learningAppBack.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

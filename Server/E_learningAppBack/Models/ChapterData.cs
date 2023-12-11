@@ -47,8 +47,6 @@ namespace E_learningAppBack.Models
     {
         public string Answer { get; set; }
 
-        [JsonIgnore]
-        public bool IsCorrect { get; set; }
     }
 
 }

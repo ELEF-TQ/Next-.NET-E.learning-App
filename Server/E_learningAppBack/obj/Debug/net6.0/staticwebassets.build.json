@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3HaGEPsZlHpCtitdKYevz6USCvzhmLc+tLcwJUmhJD8=",
+  "Hash": "tyBEtTxiLpwPoPLP7pOwON65NPAz1P3nwMKGVCPycLU=",
   "Source": "E_learningAppBack",
   "BasePath": "_content/E_learningAppBack",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\Debug\\net6.0\\scopedcss\\bundle\\E_learningAppBack.styles.css",
-      "SourceId": "E_learningAppBack",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/E_learningAppBack",
-      "RelativePath": "E_learningAppBack.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\Debug\\net6.0\\scopedcss\\bundle\\E_learningAppBack.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\E_learningAppBack.bundle.scp.css",
-      "SourceId": "E_learningAppBack",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/E_learningAppBack",
-      "RelativePath": "E_learningAppBack.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\E_learningAppBack.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Users\\sdf\\Desktop\\TMP\\C# TP\\E_Learning\\Server\\E_learningAppBack\\wwwroot\\css\\site.css",
       "SourceId": "E_learningAppBack",

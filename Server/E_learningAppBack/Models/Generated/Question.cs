@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace E_learningAppBack.Models
+namespace E_learningAppBack.Models.Generated
 {
     public partial class Question
     {

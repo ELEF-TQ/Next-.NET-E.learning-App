@@ -1,4 +1,4 @@
-namespace E_learningAppBack.Models
+namespace E_learningAppBack.Models.ErrorView
 {
     public class ErrorViewModel
     {

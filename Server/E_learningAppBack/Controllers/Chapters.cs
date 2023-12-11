@@ -1,4 +1,7 @@
 ﻿using E_learningAppBack.Models;
+using E_learningAppBack.Models.Generated;
+
+using E_learningAppBack.Models.Context;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -121,13 +124,11 @@ public class Chapters : ControllerBase
                 }
 
             }
-            //Console.WriteLine(correctAnswers);
-            //Console.WriteLine(totalQuestions);
+
 
 
 
             double scorePercentage = (correctAnswers / totalQuestions) * 100.0;
-            //Console.WriteLine(scorePercentage);
 
 
             var chapter = _context.Chapters.Find(chapterId);
