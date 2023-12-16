@@ -10,7 +10,6 @@ import { AppDispatch, RootState } from '@/context/store';
 import { getChapter, answerChapter } from '@/context/ChapterSlice';
 import { CircularProgress } from '@mui/material';
 import getUserFromLocalStorage from '@/utils/getLocalUser';
-// ... (imports)
 
 export default function Content() {
   const dispatch = useDispatch<AppDispatch>();
@@ -60,14 +59,11 @@ export default function Content() {
         answer: answer.answer,
       })),
     };
-
     if (formData.questions.length < chapter?.questions.length) {
       alert('Please answer all questions before submitting.');
       return;
     }
-
     console.log(formData);
-
     try {
       dispatch(answerChapter({ chapterId: chapter?.chapter.id, answers: formData }));
       if (chapterScore !== null) {
@@ -138,11 +134,31 @@ export default function Content() {
               )}
             </div>
 
-            {showScore  && (
-              <div className="mt-4 text-center">
-                <h3>Your Score is: {score}</h3>
-              </div>
-            )}
+            
+            {showScore && (
+            <div className="mt-4 text-center">
+              {chapterScore !== null ? (
+                <>
+                  <h3>Your Score is: {chapterScore}</h3>
+                  {chapterScore >= 50 ? (
+                    <p>Congratulations, you passed!</p>
+                  ) : (
+                    <p>You didn't pass! Retake the test!</p>
+                  )}
+                </>
+              ) : (
+                <p>No score available.</p>
+              )}
+            </div>
+          )}
+
+
+
+
+
+
+
+
           </>
         )}
       </main>

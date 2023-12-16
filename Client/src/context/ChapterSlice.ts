@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '@/api';
 
 interface QuizState {
+  ScoreTotal : any;
   chapterScore: any | null ;
   chapter: any | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -9,6 +10,7 @@ interface QuizState {
 }
 
 const initialState: QuizState = {
+  ScoreTotal:null,
   chapterScore: 45,
   chapter: null,
   status: 'idle',
@@ -28,6 +30,15 @@ export const answerChapter = createAsyncThunk('quiz/answerChapter', async ({ cha
   try {
     console.log(answers)
     const response = await api.post(`chapters/${chapterId}`, answers);
+    return response.data;
+  } catch (error) {
+    throw new Error('An error occurred while answering the chapter.');
+  }
+});
+
+export const demandeCertificat = createAsyncThunk('quiz/demandeCertificat' , async(userId:number)=> {
+  try {
+    const response = await api.post(`chapters/totalscore/${userId}`);
     return response.data;
   } catch (error) {
     throw new Error('An error occurred while answering the chapter.');
@@ -61,6 +72,17 @@ const chapterSlice = createSlice({
         state.chapterScore = action.payload;
       })
       .addCase(answerChapter.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message || 'An error occurred while answering the chapter.';
+      })
+      .addCase(demandeCertificat.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(demandeCertificat.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.ScoreTotal = action.payload;
+      })
+      .addCase(demandeCertificat.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message || 'An error occurred while answering the chapter.';
       });
