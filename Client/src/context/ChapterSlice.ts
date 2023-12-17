@@ -11,7 +11,7 @@ interface QuizState {
 
 const initialState: QuizState = {
   ScoreTotal:null,
-  chapterScore: 45,
+  chapterScore: 0,
   chapter: null,
   status: 'idle',
   error: null,
@@ -56,9 +56,7 @@ const chapterSlice = createSlice({
       })
       .addCase(getChapter.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.chapter = action.payload;
-        console.log(state.chapter);
-        
+        state.chapter = action.payload;        
       })
       .addCase(getChapter.rejected, (state, action) => {
         state.status = 'failed';
@@ -81,6 +79,7 @@ const chapterSlice = createSlice({
       .addCase(demandeCertificat.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.ScoreTotal = action.payload;
+        console.log(state.ScoreTotal)
       })
       .addCase(demandeCertificat.rejected, (state, action) => {
         state.status = 'failed';

@@ -139,8 +139,8 @@ export default function Content() {
             <div className="mt-4 text-center">
               {chapterScore !== null ? (
                 <>
-                  <h3>Your Score is: {chapterScore}</h3>
-                  {chapterScore >= 50 ? (
+                  <h3>Your Score is: {chapterScore.score}</h3>
+                  {chapterScore.score >= 50 ? (
                     <p>Congratulations, you passed!</p>
                   ) : (
                     <p>You didn't pass! Retake the test!</p>

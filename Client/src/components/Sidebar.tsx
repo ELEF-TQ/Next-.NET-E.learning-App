@@ -7,20 +7,19 @@ import { demandeCertificat } from '@/context/ChapterSlice';
 const Sidebar = () => { 
 
   const dispatch = useDispatch<AppDispatch>();
-  const { ScoreTotal } = useSelector((state : RootState)=>state.chapter)
+  const { ScoreTotal } = useSelector((state: RootState) => state.chapter);
   const handleChapterClick = (chapterId: number) => {
     dispatch(getChapter(chapterId));
   };
 
   const user = getUserFromLocalStorage();
   
-  const handleClickCertificat = () => {
-    dispatch(demandeCertificat(user.id));
-    if (ScoreTotal) {
-      console.log('ScoreTotal is:', ScoreTotal);
-      if (typeof ScoreTotal === 'number') {
-        console.log('ScoreTotal is a number:', ScoreTotal);
-      } else if (typeof ScoreTotal === 'string' && ScoreTotal.includes('Sorry, you did not succeed to get your certificate')) {
+  const handleClickCertificat = async () => {
+     dispatch(demandeCertificat(user.id))
+     console.log('ScoreTotal:', ScoreTotal);
+    if (ScoreTotal && ScoreTotal.totalScore != null) {
+      console.log('ScoreTotal is a number:', ScoreTotal.totalScore);
+      if (typeof ScoreTotal === 'string' && ScoreTotal.includes('Sorry, you did not succeed to get your certificate')) {
         console.log('ScoreTotal includes an error message:', ScoreTotal);
         alert(ScoreTotal);
       }
@@ -28,6 +27,7 @@ const Sidebar = () => {
       console.log('ScoreTotal is falsy');
     }
   };
+  
   
   
 
