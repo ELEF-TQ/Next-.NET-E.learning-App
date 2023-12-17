@@ -10,7 +10,7 @@ interface QuizState {
 }
 
 const initialState: QuizState = {
-  ScoreTotal:null,
+  ScoreTotal:{"totalScore": 91 },
   chapterScore: 0,
   chapter: null,
   status: 'idle',

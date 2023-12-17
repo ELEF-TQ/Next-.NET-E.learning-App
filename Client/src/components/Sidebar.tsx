@@ -1,13 +1,17 @@
-// Sidebar.tsx
+'use client'
 import { useDispatch, useSelector } from 'react-redux';
 import { getChapter } from '@/context/ChapterSlice';
 import {AppDispatch, RootState } from '@/context/store';
 import getUserFromLocalStorage from '@/utils/getLocalUser';
 import { demandeCertificat } from '@/context/ChapterSlice';
+import Certificate from '@/components/Certficate';
+
+
 const Sidebar = () => { 
 
   const dispatch = useDispatch<AppDispatch>();
   const { ScoreTotal } = useSelector((state: RootState) => state.chapter);
+
   const handleChapterClick = (chapterId: number) => {
     dispatch(getChapter(chapterId));
   };
@@ -15,14 +19,13 @@ const Sidebar = () => {
   const user = getUserFromLocalStorage();
   
   const handleClickCertificat = async () => {
-     dispatch(demandeCertificat(user.id))
-     console.log('ScoreTotal:', ScoreTotal);
-    if (ScoreTotal && ScoreTotal.totalScore != null) {
+    await dispatch(demandeCertificat(user.id));
+    if (typeof ScoreTotal === 'string' && ScoreTotal.includes('Sorry, you did not succeed to get your certificate')) {
+      console.log('ScoreTotal includes an error message:', ScoreTotal);
+      alert(ScoreTotal);
+    } else if (ScoreTotal && ScoreTotal.totalScore != null) {
       console.log('ScoreTotal is a number:', ScoreTotal.totalScore);
-      if (typeof ScoreTotal === 'string' && ScoreTotal.includes('Sorry, you did not succeed to get your certificate')) {
-        console.log('ScoreTotal includes an error message:', ScoreTotal);
-        alert(ScoreTotal);
-      }
+       window.location.href='/certificate';
     } else {
       console.log('ScoreTotal is falsy');
     }

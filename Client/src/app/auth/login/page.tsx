@@ -22,7 +22,6 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(userData);
     dispatch(login(userData));
   };
 
