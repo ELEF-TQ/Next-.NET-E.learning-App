@@ -17,7 +17,7 @@ const page = () => {
         }
       }, [dispatch]);
   return (
-    <div>
+    <div className="w-full">
       <Certificate username={user.username}/>
     </div>
   )

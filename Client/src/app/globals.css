@@ -39,8 +39,6 @@ body {
 }
 
 .Footer {
-  position: absolute;
-  bottom: 1rem;
   width: 100%;
 }
 
@@ -76,10 +74,11 @@ input[type="radio"]:checked:after {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5rem 1rem;
+  /* margin: 5rem 1rem; */
 }
 .content .Main {
   height: 30rem;
+  margin: 5rem 1rem;
 }
 
 
@@ -87,4 +86,7 @@ input[type="radio"]:checked:after {
   width: 80%;
   height: 150%;
   margin-top: 2rem;
+}
+.certificate {
+  width: 150%;
 }

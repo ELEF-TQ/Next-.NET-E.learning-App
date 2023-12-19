@@ -11,8 +11,8 @@ const Certificate: React.FC<CertificateProps> = ({ username }) => {
   };
 
   return (
-<>
-  <div className="certificate bg-gray-800 text-white p-10 rounded-lg shadow-md max-w-5xl w-full mx-auto mt-16 flex">
+<div className=''>
+  <div className="certificate bg-gray-800 text-white p-10 rounded-lg shadow-md max-w-5xl mx-auto flex">
 
     {/* Left Side - Certificate Information */}
     <div className="flex-1">
@@ -74,7 +74,7 @@ const Certificate: React.FC<CertificateProps> = ({ username }) => {
       Print Certificate
     </button>
   </div>
-</>
+</div>
 
   );
 };

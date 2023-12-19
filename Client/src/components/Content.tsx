@@ -2,7 +2,7 @@
 
 
 import React, { useEffect, useState } from 'react';
-import Video from '@/components/Video';
+const Video = React.lazy(() => import('./Video'));
 import QuizQuestion from '@/components/QuizQuestion';
 import Sidebar from '@/components/Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -89,7 +89,9 @@ export default function Content() {
         {status === 'succeeded' && (
           <>
             {isVideo ? (
-              <Video url={chapter.videos[currentQuestion]?.url} />
+              <div className='bg-gray rounded-3xl'>
+              {isVideoLoading ? <div className=''><CircularProgress /></div> : <Video url={chapter.videos[currentQuestion]?.url} />}
+              </div>
             ) : (
               <QuizQuestion
                 question={chapter.questions[currentQuestion - chapter.videos.length]?.text}

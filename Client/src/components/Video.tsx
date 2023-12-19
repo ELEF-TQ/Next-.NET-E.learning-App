@@ -9,8 +9,9 @@ const Video: React.FC<VideoProps> = ({ url }) => {
   }
 
   return (
-    <div className="video-container flex items-center justify-center">
+    <div className="video-container flex items-center  justify-center">
       <iframe
+      className="rounded-3xl"
         width="560"
         height="315"
         src={`https://www.youtube.com/embed/${url}`}
