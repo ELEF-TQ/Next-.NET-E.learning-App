@@ -10,7 +10,7 @@ interface QuizState {
 }
 
 const initialState: QuizState = {
-  ScoreTotal:{"totalScore": 91 },
+  ScoreTotal:"Sorry, you did not succeed to get your certificate" ,
   chapterScore: 0,
   chapter: null,
   status: 'idle',
@@ -79,7 +79,6 @@ const chapterSlice = createSlice({
       .addCase(demandeCertificat.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.ScoreTotal = action.payload;
-        console.log(state.ScoreTotal)
       })
       .addCase(demandeCertificat.rejected, (state, action) => {
         state.status = 'failed';

@@ -3,35 +3,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getChapter } from '@/context/ChapterSlice';
 import {AppDispatch, RootState } from '@/context/store';
 import getUserFromLocalStorage from '@/utils/getLocalUser';
-import { demandeCertificat } from '@/context/ChapterSlice';
-import Certificate from '@/components/Certficate';
-
+import api from '@/api';
+import { useState } from 'react';
 
 const Sidebar = () => { 
 
   const dispatch = useDispatch<AppDispatch>();
-  const { ScoreTotal } = useSelector((state: RootState) => state.chapter);
-
+  const user = getUserFromLocalStorage();
+  
   const handleChapterClick = (chapterId: number) => {
     dispatch(getChapter(chapterId));
   };
 
-  const user = getUserFromLocalStorage();
   
+
   const handleClickCertificat = async () => {
-    await dispatch(demandeCertificat(user.id));
-    if (typeof ScoreTotal === 'string' && ScoreTotal.includes('Sorry, you did not succeed to get your certificate')) {
-      console.log('ScoreTotal includes an error message:', ScoreTotal);
-      alert(ScoreTotal);
-    } else if (ScoreTotal && ScoreTotal.totalScore != null) {
-      console.log('ScoreTotal is a number:', ScoreTotal.totalScore);
-       window.location.href='/certificate';
-    } else {
-      console.log('ScoreTotal is falsy');
+    try {
+      const response = await api.post(`chapters/totalscore/${user.id}`);
+      const data = response.data;
+      console.log(data);
+      if (typeof data === 'string') {
+        alert(data);
+      } else if (data && data.totalScore != null) {
+        console.log('TotalScore:', data.totalScore);
+         window.location.href = '/certificate';
+      } else {
+        console.log('Unexpected response:', data);
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
     }
   };
-  
-  
   
 
   return (

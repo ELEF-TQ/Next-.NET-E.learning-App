@@ -90,3 +90,10 @@ input[type="radio"]:checked:after {
 .certificate {
   width: 150%;
 }
+
+.Login_Page {
+  margin: 8rem 0;
+}
+.Signup_Page {
+  margin: 3.6rem 0;
+}
