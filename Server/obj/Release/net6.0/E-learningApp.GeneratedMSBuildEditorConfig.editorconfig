@@ -9,39 +9,9 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = E_learningApp
 build_property.RootNamespace = E_learningApp
-build_property.ProjectDir = C:\Users\admin\Projects\E_Learning\Server\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = C:\OWN\Projects\.NET\E_Learning\Server\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\admin\Projects\E_Learning\Server
+build_property.MSBuildProjectDirectory = C:\OWN\Projects\.NET\E_Learning\Server
 build_property._RazorSourceGeneratorDebug = 
-
-[C:/Users/admin/Projects/E_Learning/Server/E_learningAppBack/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = RV9sZWFybmluZ0FwcEJhY2tcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/admin/Projects/E_Learning/Server/E_learningAppBack/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = RV9sZWFybmluZ0FwcEJhY2tcVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/admin/Projects/E_Learning/Server/E_learningAppBack/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = RV9sZWFybmluZ0FwcEJhY2tcVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/admin/Projects/E_Learning/Server/E_learningAppBack/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = RV9sZWFybmluZ0FwcEJhY2tcVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/admin/Projects/E_Learning/Server/E_learningAppBack/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = RV9sZWFybmluZ0FwcEJhY2tcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/admin/Projects/E_Learning/Server/E_learningAppBack/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = RV9sZWFybmluZ0FwcEJhY2tcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/admin/Projects/E_Learning/Server/E_learningAppBack/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = RV9sZWFybmluZ0FwcEJhY2tcVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-6r35w9xz4q
